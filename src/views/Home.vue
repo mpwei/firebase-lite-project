@@ -8,6 +8,7 @@
 <script>
 	// @ is an alias to /src
 	import HelloWorld from '@/components/HelloWorld.vue'
+	//import database from '../firestore'
 
 	export default {
 		name: 'home',
@@ -15,9 +16,13 @@
 			HelloWorld
 		},
 		mounted() {
-			this.$store.dispatch('Get', 'Carousel').then((_Response) => {
-				console.log(_Response)
-			});
+			this.$store.state.database.collection('Carousel').get().then(querySnapshot => {
+				querySnapshot.forEach(doc => {
+					console.log(doc.data())
+				})
+			}).catch((_Error) => {
+				console.log(_Error)
+			})
 		}
 	}
 </script>
