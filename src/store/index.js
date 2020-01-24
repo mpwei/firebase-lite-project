@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        database: Firestore
+        database: Firestore,
+        loading: false
     },
     mutations: {},
     actions: {},
