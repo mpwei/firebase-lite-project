@@ -1,9 +1,7 @@
 <template>
-	<div class="site-section py-0">
-		<div class="text-center">
-			<img alt="Vue logo" src="../assets/logo.png">
-		</div>
-	</div>
+	<section id="home">
+
+	</section>
 </template>
 
 <script>

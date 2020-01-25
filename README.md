@@ -3,25 +3,17 @@
 基於Vue.js + Firestore建構而成的輕量化專案，不須額外建置資料庫與後端，完全由前端執行CURD操作。
 ```
 
-## Project setup
+### 安裝依賴套件
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 執行開發環境
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 建構正式環境
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

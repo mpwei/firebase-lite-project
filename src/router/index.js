@@ -31,9 +31,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((_To, _From, _Next) => {
-  // let Root = router.app;
-  let CheckSuccess = true;
-console.log(_To)
+  // let Root = router.app
+  let CheckSuccess = true
+
   if (CheckSuccess) {
     _Next()
   }
