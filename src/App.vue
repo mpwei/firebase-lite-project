@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Loading v-if="$store.state.loading"/>
-        <vue-progress-bar></vue-progress-bar>
+        <vue-progress-bar />
         <Header/>
         <router-view/>
         <Footer/>
