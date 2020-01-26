@@ -51,13 +51,13 @@
         methods: {
             GetMenu() {
                 let self = this
-                this.$store.state.loading = true
+                this.$store.dispatch("LoadingStart", this.$root)
                 this.$binding("response", this.$store.state.database.collection('Menu').orderBy('No', 'asc')).then(response => {
                     self.Menu = response
-                    this.$store.state.loading = false
+                    this.$store.dispatch("LoadingEnd", this.$root)
                 }).catch(error => {
                     alert(error)
-                    this.$store.state.loading = false
+                    this.$store.dispatch("LoadingFail", this.$root)
                 })
             }
         }

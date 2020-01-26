@@ -10,6 +10,19 @@ export default new Vuex.Store({
         loading: false
     },
     mutations: {},
-    actions: {},
+    actions: {
+        LoadingStart(_Context, _Root) {
+            _Context.state.loading = true
+            _Root.$Progress.start()
+        },
+        LoadingEnd(_Context, _Root) {
+            _Context.state.loading = false
+            _Root.$Progress.finish()
+        },
+        LoadingFail(_Context, _Root) {
+            _Context.state.loading = false
+            _Root.$Progress.fail()
+        },
+    },
     modules: {}
 })

@@ -6,21 +6,21 @@
 
 <script>
 	export default {
-		name: 'home',
+		name: 'Home',
 		mounted() {
 			this.GetData()
 		},
 		methods: {
 			GetData() {
-				this.$Progress.start()
+				this.$store.dispatch("LoadingStart", this.$root)
 				this.$store.state.database.collection('Carousel').get().then(response => {
 					response.forEach(doc => {
 						console.log(doc.data())
 					})
-					this.$Progress.finish()
+					this.$store.dispatch("LoadingEnd", this.$root)
 				}).catch((_Error) => {
 					alert(_Error)
-					this.$Progress.fail()
+					this.$store.dispatch("LoadingFail", this.$root)
 				})
 			}
 		}

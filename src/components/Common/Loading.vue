@@ -23,7 +23,7 @@
         position: fixed;
         width: 100%;
         height: 100%;
-        z-index: 999;
+        z-index: 1000;
     }
 
     #loading > .spinner-grow {
@@ -32,7 +32,7 @@
     }
 
     .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
+        transition: opacity .8s;
     }
 
     .fade-enter, .fade-leave-to {
