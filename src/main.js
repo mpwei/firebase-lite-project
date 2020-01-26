@@ -2,19 +2,30 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-
+import VueProgressBar from 'vue-progressbar'
+import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import './vendor.js'
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+//Progress Bar
+Vue.use(VueProgressBar, {
+	color: '#212121',
+	failedColor: 'red',
+	thickness: '3px',
+	transition: {
+		speed: '0.3s',
+		opacity: '0.5s',
+		termination: 500
+	},
+})
 
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+	router,
+	store,
+	render: h => h(App)
 }).$mount('#app')
