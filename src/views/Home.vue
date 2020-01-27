@@ -1,14 +1,17 @@
 <template>
-	<section id="home">
-
-	</section>
+	<ContentWrapper id="home">
+		<section class="container">
+			<h1>這是首頁</h1>
+			<p>歡迎光臨</p>
+		</section>
+	</ContentWrapper>
 </template>
 
 <script>
 	export default {
 		name: 'Home',
 		mounted() {
-			this.GetData()
+			//this.GetData()
 		},
 		methods: {
 			GetData() {
@@ -21,6 +24,7 @@
 				}).catch((_Error) => {
 					alert(_Error)
 					this.$store.dispatch("LoadingFail", this.$root)
+					this.$router.push('/error')
 				})
 			}
 		}

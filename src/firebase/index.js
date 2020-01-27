@@ -1,6 +1,5 @@
 /**
- * 資料庫設定
- * 以雲端服務 - Firestore儲存資料
+ * Firebase設定
  *
  * @since 0.0.1
  * @version 0.0.1
@@ -17,10 +16,9 @@ require('firebase/firestore')
 Vue.use(VueFirestore)
 
 const firebaseApp = Firebase.initializeApp({
-  apiKey: "AIzaSyD0BuSyCOWGiobZl44vBzz_19xXLFuiCNw",
-  projectId: "mpwei-2889f"
+    apiKey: "AIzaSyD0BuSyCOWGiobZl44vBzz_19xXLFuiCNw",
+    projectId: "mpwei-2889f"
 })
 
-const firestore = firebaseApp.firestore()
-
-export default firestore
+export const firestore = firebaseApp.firestore(),
+    storage = firebaseApp.storage()

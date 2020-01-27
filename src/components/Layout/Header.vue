@@ -40,7 +40,7 @@
                     },
                     github: {
                         icon: 'github',
-                        link: '//github.com/mpwei/'
+                        link: '//github.com/mpwei'
                     }
                 }
             }
@@ -52,7 +52,7 @@
             GetMenu() {
                 let self = this
                 this.$store.dispatch("LoadingStart", this.$root)
-                this.$binding("response", this.$store.state.database.collection('Menu').orderBy('No', 'asc')).then(response => {
+                this.$binding("response", this.$store.state.database.collection('Menu').where('Open', '==', true).orderBy('No', 'asc')).then(response => {
                     self.Menu = response
                     this.$store.dispatch("LoadingEnd", this.$root)
                 }).catch(error => {

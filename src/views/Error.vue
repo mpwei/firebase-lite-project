@@ -1,21 +1,21 @@
 <template>
-  <ContentWrapper id="about">
-    <section class="container">
-      <h1>關於這裡</h1>
-      <p>你好</p>
+  <ContentWrapper id="ErrorPage">
+    <section class="container text-center">
+      <h1>Error 403</h1>
+      <p>發生了點錯誤，請稍後再訪問。</p>
     </section>
   </ContentWrapper>
 </template>
 
 <script>
   export default {
-    name: 'About',
+    name: 'ErrorPage',
     mounted() {
       this.GetData()
     },
     methods: {
       GetData() {
-        // console.log(this.$store)
+
       }
     }
   }
