@@ -17,6 +17,7 @@ Vue.use(VueFirestore)
 
 const firebaseApp = Firebase.initializeApp({
     apiKey: "AIzaSyD0BuSyCOWGiobZl44vBzz_19xXLFuiCNw",
+    storageBucket: "mpwei-2889f.appspot.com",
     projectId: "mpwei-2889f"
 })
 

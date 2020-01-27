@@ -3,7 +3,7 @@
         <b-navbar type="light" variant="white">
             <div class="container">
                 <b-navbar-brand to="/" class="site-logo mr-auto">
-                    <img src="../../assets/img/logo_icon.png" alt="More Patient">
+                    <img :src="Logo" alt="More Patient">
                     <span class="ml-2">More Patient.</span>
                 </b-navbar-brand>
             </div>
@@ -13,12 +13,14 @@
                 <b-navbar-toggle target="nav-collapse"/>
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
-                        <b-nav-item class="mr-lg-3" :key="index" v-for="(value,index) in Menu" :to="value.Url">{{value.Name}}
+                        <b-nav-item class="mr-lg-3" :key="index" v-for="(value,index) in Menu" :to="value.Url"
+                                    :class="{'active': value.Url === $route.path}">{{value.Name}}
                         </b-nav-item>
                     </b-navbar-nav>
                     <b-navbar-nav class="ml-auto d-none d-md-flex">
-                        <b-nav-item right :key="index" v-for="(value,index) in Social" :href="value.link" target="_blank">
-                            <i class="fa" :class="'fa-' + value.icon" />
+                        <b-nav-item right :key="index" v-for="(value,index) in Social" :href="value.link"
+                                    target="_blank">
+                            <i class="fa" :class="'fa-' + value.icon"/>
                         </b-nav-item>
                     </b-navbar-nav>
                 </b-collapse>
@@ -33,6 +35,7 @@
         data() {
             return {
                 Menu: [],
+                Logo: '',
                 Social: {
                     mail: {
                         icon: 'envelope',
@@ -46,18 +49,36 @@
             }
         },
         mounted() {
-            this.GetMenu()
+            this.$store.dispatch("LoadingStart", this.$root)
+            Promise.all(this.Init()).then(() => {
+                this.$store.dispatch("LoadingEnd", this.$root)
+            })
         },
         methods: {
-            GetMenu() {
+            Init() {
+                return [
+                    new Promise(_Resolve => this.GetLogo(_Resolve)),
+                    new Promise(_Resolve => this.GetMenu(_Resolve)),
+                ]
+            },
+            GetLogo(_Resolve) {
                 let self = this
-                this.$store.dispatch("LoadingStart", this.$root)
+                this.$store.state.storage.ref().child('images/logo_icon.png').getDownloadURL().then(url => {
+                    self.Logo = url
+                    _Resolve()
+                }).catch(function (error) {
+                    alert(error)
+                    _Resolve()
+                });
+            },
+            GetMenu(_Resolve) {
+                let self = this
                 this.$binding("response", this.$store.state.database.collection('Menu').where('Open', '==', true).orderBy('No', 'asc')).then(response => {
                     self.Menu = response
-                    this.$store.dispatch("LoadingEnd", this.$root)
+                    _Resolve()
                 }).catch(error => {
                     alert(error)
-                    this.$store.dispatch("LoadingFail", this.$root)
+                    _Resolve()
                 })
             }
         }

@@ -11,7 +11,7 @@ const routes = [
     {
         path: '/home',
         name: 'home',
-        component: import('../views/Home.vue'),
+        component: () => import('../views/Home.vue'),
         meta: {
             Auth: false
         }
@@ -62,7 +62,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((_To, _From, _Next) => {
-    // let Root = router.app
     let CheckSuccess = true
 
     if (CheckSuccess) {
