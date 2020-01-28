@@ -8,7 +8,12 @@ export default new Vuex.Store({
     state: {
         database: firestore,
         storage: storage,
-        loading: false
+        loading: false,
+        profile: {
+            logo: 'images/logo_icon.png',
+            menu: [],
+            website: [],
+        }
     },
     mutations: {},
     actions: {

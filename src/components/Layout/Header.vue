@@ -3,7 +3,7 @@
         <b-navbar type="light" variant="white">
             <div class="container">
                 <b-navbar-brand to="/" class="site-logo mr-auto">
-                    <img :src="Logo" alt="More Patient">
+                    <img :src="$store.state.profile.logo" alt="More Patient">
                     <span class="ml-2">More Patient.</span>
                 </b-navbar-brand>
             </div>
@@ -13,7 +13,7 @@
                 <b-navbar-toggle target="nav-collapse"/>
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
-                        <b-nav-item class="mr-lg-3" :key="index" v-for="(value,index) in Menu" :to="value.Url"
+                        <b-nav-item class="mr-lg-3" :key="index" v-for="(value,index) in $store.state.profile.menu" :to="value.Url"
                                     :class="{'active': value.Url === $route.path}">{{value.Name}}
                         </b-nav-item>
                     </b-navbar-nav>
@@ -35,7 +35,7 @@
         data() {
             return {
                 Menu: [],
-                Logo: '',
+                Logo: 'images/logo_icon.png',
                 Social: {
                     mail: {
                         icon: 'envelope',
@@ -49,38 +49,15 @@
             }
         },
         mounted() {
-            this.$store.dispatch("LoadingStart", this.$root)
-            Promise.all(this.Init()).then(() => {
-                this.$store.dispatch("LoadingEnd", this.$root)
-            })
+
         },
         methods: {
             Init() {
                 return [
-                    new Promise(_Resolve => this.GetLogo(_Resolve)),
-                    new Promise(_Resolve => this.GetMenu(_Resolve)),
+                    // new Promise((_Resolve, _Reject) => this.GetLogo(_Resolve, _Reject)),
+                    // new Promise((_Resolve, _Reject) => this.GetMenu(_Resolve, _Reject)),
                 ]
             },
-            GetLogo(_Resolve) {
-                let self = this
-                this.$store.state.storage.ref().child('images/logo_icon.png').getDownloadURL().then(url => {
-                    self.Logo = url
-                    _Resolve()
-                }).catch(function (error) {
-                    alert(error)
-                    _Resolve()
-                });
-            },
-            GetMenu(_Resolve) {
-                let self = this
-                this.$binding("response", this.$store.state.database.collection('Menu').where('Open', '==', true).orderBy('No', 'asc')).then(response => {
-                    self.Menu = response
-                    _Resolve()
-                }).catch(error => {
-                    alert(error)
-                    _Resolve()
-                })
-            }
         }
     }
 </script>
