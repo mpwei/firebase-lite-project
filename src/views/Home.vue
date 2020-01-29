@@ -28,7 +28,7 @@
             </b-carousel>
         </section>
         <section class="container mb-4">
-aaa45465
+
         </section>
     </ContentWrapper>
 </template>

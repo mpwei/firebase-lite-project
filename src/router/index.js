@@ -8,51 +8,58 @@ const routes = [
         path: '/',
         redirect: '/home'
     },
+    // User Pages
     {
-        path: '/home',
-        name: 'home',
-        component: () => import('../views/Home.vue'),
-        meta: {
-            Auth: false
-        }
+        path: '/',
+        component: () => import('../components/Layout/UserLayout.vue'),
+        children: [
+            {
+                component: () => import('../views/Home.vue'),
+                path: '/home',
+                name: 'home',
+                meta: {
+                    Auth: false
+                }
+            },
+            {
+                path: '/about',
+                name: 'about',
+                component: () => import('../views/About.vue'),
+                meta: {
+                    Auth: false
+                }
+            },
+            {
+                path: '/error',
+                name: 'error',
+                component: () => import('../views/Error.vue'),
+                meta: {
+                    Auth: false
+                }
+            },
+            {
+                path: '/notfound',
+                name: 'notfound',
+                component: () => import('../views/NotFound.vue'),
+                meta: {
+                    Auth: false
+                }
+            },
+            {
+                path: '/maintenance',
+                name: 'maintenance',
+                component: () => import('../views/Maintenance.vue'),
+                meta: {
+                    Auth: false
+                }
+            },
+            //未符合路由，導向404頁面
+            {
+                path: '*',
+                redirect: '/notfound'
+            }
+        ]
     },
-    {
-        path: '/about',
-        name: 'about',
-        component: () => import('../views/About.vue'),
-        meta: {
-            Auth: false
-        }
-    },
-    {
-        path: '/error',
-        name: 'error',
-        component: () => import('../views/Error.vue'),
-        meta: {
-            Auth: false
-        }
-    },
-    {
-        path: '/notfound',
-        name: 'notfound',
-        component: () => import('../views/NotFound.vue'),
-        meta: {
-            Auth: false
-        }
-    },
-    {
-        path: '/maintenance',
-        name: 'maintenance',
-        component: () => import('../views/Maintenance.vue'),
-        meta: {
-            Auth: false
-        }
-    },
-    //未符合路由，導向404頁面
-    {
-        path: '*',
-        redirect: '/notfound'
-    }
 ]
 
 const router = new VueRouter({
