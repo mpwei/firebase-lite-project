@@ -54,6 +54,7 @@ h1, h2, h3, h4, h5,
     letter-spacing: 0.05rem;
 }
 
-#nav-collapse > .nav-item {
-
+#IndexCarousel .card-footer > span:not(:last-child)::after {
+    content: "｜";
+    margin: 0 0.33rem;
 }

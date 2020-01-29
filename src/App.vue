@@ -62,10 +62,13 @@
             },
             GetMenu(_Resolve, _Reject) {
                 let self = this
-                this.$binding("_Response", this.$store.state.database.collection('Menu').where('Open', '==', true).orderBy('No', 'asc')).then(_Response => {
-                    self.$store.state.profile.menu = _Response
+                self.$store.state.profile.menu = []
+                this.$store.state.database.collection('Menu').where('Open', '==', true).orderBy('No', 'asc').get().then(_Response => {
+                    _Response.forEach(doc => {
+                        self.$store.state.profile.menu.push(doc.data())
+                    })
                     _Resolve()
-                }).catch(_Error => {
+                }).catch(function (_Error) {
                     _Reject(_Error)
                 })
             }

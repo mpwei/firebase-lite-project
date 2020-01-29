@@ -11,13 +11,15 @@
                         <div class="col-lg-4">
                             <b-card no-body class="h-100 rounded-0">
                                 <b-card-body body-tag="article">
-                                    <b-card-title title-tag="h3" class="font-weight-bold">{{value.Title}}</b-card-title>
+                                    <b-card-title title-tag="h3" class="h2 font-weight-bold">{{value.Title}}</b-card-title>
                                     <b-card-text>
                                         {{value.Content}}
                                     </b-card-text>
                                 </b-card-body>
-                                <b-card-footer>
-                                    123
+                                <b-card-footer class="bg-white border-0 text-secondary small">
+                                    <span>Vue.js</span>
+                                    <span>Firebase</span>
+                                    <span>2020-01-20</span>
                                 </b-card-footer>
                             </b-card>
                         </div>
@@ -26,7 +28,7 @@
             </b-carousel>
         </section>
         <section class="container mb-4">
-            123 {{Carousel.Items.length}}
+aaa45465
         </section>
     </ContentWrapper>
 </template>
