@@ -1,15 +1,12 @@
 <template>
-    <main>
-        <Loading v-if="$store.state.loading"/>
-        <vue-progress-bar/>
-        <router-view/>
-    </main>
+    <router-view/>
 </template>
 
 <script>
     export default {
         name: 'AdminLayout',
         components: {},
+        mounted() {},
         methods: {}
     }
 </script>

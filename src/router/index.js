@@ -15,6 +15,9 @@ const routes = [
     //訪客頁面
     {
         path: '/',
+        beforeEnter: (_To, _From, _Next) => {
+            _Next()
+        },
         component: () => import('../components/Layout/UserLayout.vue'),
         children: [
             {
@@ -63,6 +66,15 @@ const routes = [
     {
         path: '/',
         component: () => import('../components/Layout/AdminLayout.vue'),
+        beforeEnter: (_To, _From, _Next) => {
+            if (_To.meta.Auth === true) {
+                _Next({
+                    path: '/manage/login',
+                })
+            } else {
+                _Next()
+            }
+        },
         children: [
             {
                 path: '/manage/login',
@@ -70,6 +82,14 @@ const routes = [
                 component: () => import('../views/manage/Login.vue'),
                 meta: {
                     Auth: false
+                }
+            },
+            {
+                path: '/manage/dashboard',
+                name: 'dashboard',
+                component: () => import('../views/manage/Dashboard.vue'),
+                meta: {
+                    Auth: true
                 }
             },
         ]
@@ -89,10 +109,10 @@ const router = new VueRouter({
 
 router.beforeEach((_To, _From, _Next) => {
     let CheckSuccess = true
-
     if (CheckSuccess) {
         _Next()
     }
 });
+
 
 export default router
