@@ -9,10 +9,6 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-
-    Vue.component('ContentWrapper', () => import("./ContentWrapper"))
-
     export default {
         name: 'UserLayout',
         components: {

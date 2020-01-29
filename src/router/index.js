@@ -8,7 +8,11 @@ const routes = [
         path: '/',
         redirect: '/home'
     },
-    // User Pages
+    {
+        path: '/manage',
+        redirect: '/manage/login'
+    },
+    //訪客頁面
     {
         path: '/',
         component: () => import('../components/Layout/UserLayout.vue'),
@@ -53,13 +57,28 @@ const routes = [
                     Auth: false
                 }
             },
-            //未符合路由，導向404頁面
-            {
-                path: '*',
-                redirect: '/notfound'
-            }
         ]
     },
+    //管理員頁面
+    {
+        path: '/',
+        component: () => import('../components/Layout/AdminLayout.vue'),
+        children: [
+            {
+                path: '/manage/login',
+                name: 'adminlogin',
+                component: () => import('../views/manage/Login.vue'),
+                meta: {
+                    Auth: false
+                }
+            },
+        ]
+    },
+    //未符合路由，導向404頁面
+    {
+        path: '*',
+        redirect: '/notfound'
+    }
 ]
 
 const router = new VueRouter({

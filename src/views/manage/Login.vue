@@ -1,15 +1,14 @@
 <template>
-  <ContentWrapper id="ErrorPage">
+  <ContentWrapper id="AdminLogin">
     <section class="container text-center my-5">
-      <h1>ERROR 403</h1>
-      <p>發生了點錯誤，請稍後再訪問。</p>
+      <h1>Admin Login</h1>
     </section>
   </ContentWrapper>
 </template>
 
 <script>
   export default {
-    name: 'Login',
+    name: 'AdminLogin',
     mounted() {
       this.GetData()
     },

@@ -1,7 +1,7 @@
 <template>
-    <main class="pt-4 pb-5">
+    <div class="pt-4 pb-5">
         <slot />
-    </main>
+    </div>
 </template>
 
 <script>

@@ -22,6 +22,9 @@ Vue.use(VueProgressBar, {
 	},
 })
 
+Vue.component('Loading', () => import("./components/Common/Loading"))
+Vue.component('ContentWrapper', () => import("@/components/Layout/ContentWrapper"))
+
 Vue.config.productionTip = false
 
 new Vue({
