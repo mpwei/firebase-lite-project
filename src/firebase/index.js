@@ -1,5 +1,5 @@
 /**
- * Firebase設定
+ * Firebase
  *
  * @since 0.0.1
  * @version 0.0.1
@@ -10,15 +10,16 @@
 import Vue from 'vue'
 import VueFirestore from 'vue-firestore'
 import Firebase from 'firebase'
+import FirebaseConfig from './config'
 
 require('firebase/firestore')
 
 Vue.use(VueFirestore)
 
 const firebaseApp = Firebase.initializeApp({
-    apiKey: "AIzaSyD0BuSyCOWGiobZl44vBzz_19xXLFuiCNw",
-    storageBucket: "mpwei-2889f.appspot.com",
-    projectId: "mpwei-2889f"
+    apiKey: FirebaseConfig.apiKey,
+    storageBucket: FirebaseConfig.storageBucket,
+    projectId: FirebaseConfig.projectId
 })
 
 export const firestore = firebaseApp.firestore(),
