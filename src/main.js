@@ -12,7 +12,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 //Progress Bar
 Vue.use(VueProgressBar, {
-	color: '#555',
+	color: '#ffc107',
 	failedColor: 'red',
 	thickness: '3px',
 	transition: {
