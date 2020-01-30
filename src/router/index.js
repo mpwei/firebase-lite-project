@@ -37,6 +37,22 @@ const routes = [
                 }
             },
             {
+                path: '/posts',
+                name: 'postList',
+                component: () => import('../views/PostList.vue'),
+                meta: {
+                    Auth: false
+                }
+            },
+            {
+                path: '/posts/:slug',
+                name: 'posts',
+                component: () => import('../views/Post.vue'),
+                meta: {
+                    Auth: false
+                }
+            },
+            {
                 path: '/error',
                 name: 'error',
                 component: () => import('../views/Error.vue'),
@@ -46,7 +62,7 @@ const routes = [
             },
             {
                 path: '/notfound',
-                name: 'notfound',
+                name: 'notFound',
                 component: () => import('../views/NotFound.vue'),
                 meta: {
                     Auth: false
@@ -78,7 +94,7 @@ const routes = [
         children: [
             {
                 path: '/manage/login',
-                name: 'adminlogin',
+                name: 'adminLogin',
                 component: () => import('../views/manage/Login.vue'),
                 meta: {
                     Auth: false

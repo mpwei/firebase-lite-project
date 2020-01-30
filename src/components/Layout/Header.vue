@@ -4,7 +4,7 @@
             <div class="container">
                 <b-navbar-brand to="/" class="site-logo mr-auto">
                     <img :src="$store.state.profile.logo" alt="More Patient">
-                    <span class="ml-2">More Patient.</span>
+                    <h1 class="d-inline ml-2">More Patient.</h1>
                 </b-navbar-brand>
             </div>
         </b-navbar>
