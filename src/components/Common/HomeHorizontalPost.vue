@@ -1,16 +1,21 @@
 <template>
     <section class="container mb-4">
         <b-card-group class="ArticleList" deck>
-            <b-card no-body v-for="(value,index) in Posts" :key="index" @click="$router.push({ name: 'posts', params: { slug: value.Slug }})">
-                <b-card-img-lazy v-bind="mainProps" :src="value.Cover" :alt="value.Title" />
+            <b-card no-body class="rounded-0" v-for="(value,index) in Posts" :key="index" @click="$router.push({ name: 'posts', params: { slug: value.Slug }})">
+                <b-card-img-lazy class="rounded-0" v-bind="mainProps" :src="value.Cover" :alt="value.Title" />
                 <b-card-body body-tag="article">
                     <b-card-title title-tag="h3" class="h4 font-weight-bold">{{value.Title}}</b-card-title>
                     <b-card-text>{{value.Excerpt}}</b-card-text>
                 </b-card-body>
-                <b-card-footer class="bg-white border-0 text-secondary small">
+                <b-card-footer class="bg-white border-0 text-muted small">
                     <span v-for="(tag,index) in value.Tags" :key="index">{{tag}}</span>
-                    <span>{{value.PostTime}}</span>
+                    <span>{{$moment(value.PostTime).format("Y-MM-DD HH:m:s")}}</span>
                 </b-card-footer>
+            </b-card>
+            <b-card no-body class="rounded-0" :key="number" v-for="number in ComingSoon()">
+                <b-card-body body-tag="article" class="align-items-center d-flex justify-content-center">
+                    <b-card-title title-tag="h3" class="h4 font-weight-bold">Coming Soon</b-card-title>
+                </b-card-body>
             </b-card>
         </b-card-group>
     </section>
@@ -30,39 +35,8 @@
                     blankWidth:600,
                     blankHeight:400
                 },
-                Posts: [
-                    {
-                        No: 0,
-                        Cover: 'images/slide_dev3.jpg',
-                        Title: 'Firestore基本操作',
-                        Slug: 'firebase-intro',
-                        Excerpt: 'Firestore寫入、更新、讀取、刪除。',
-                        PostTime: '2020-01-20 00:00:00',
-                        Tags: ['Firestore','NoSQL']
-                    },
-                    {
-                        No: 1,
-                        Cover: 'images/slide_dev3.jpg',
-                        Title: 'Firestore基本操作2',
-                        Slug: 'firebase-intro2',
-                        Excerpt: 'Firestore寫入、更新、讀取、刪除。',
-                        PostTime: '2020-01-20 00:00:00',
-                        Tags: ['Firestore','NoSQL']
-                    },
-                    {
-                        No: 2,
-                        Cover: 'images/slide_dev3.jpg',
-                        Title: 'Firestore基本操作3',
-                        Slug: 'firebase-intro3',
-                        Excerpt: 'Firestore寫入、更新、讀取、刪除。',
-                        PostTime: '2020-01-20 00:00:00',
-                        Tags: ['Firestore','NoSQL']
-                    }
-                ]
+                Posts: []
             }
-        },
-        computed: {
-
         },
         mounted() {
             this.$root.$Progress.start()
@@ -77,8 +51,28 @@
         methods: {
             Init() {
                 return [
-                    new Promise((_Resolve, _Reject) => this.SetCover(_Resolve, _Reject)),
+                    new Promise((_Resolve, _Reject) => this.GetPosts(_Resolve, _Reject)),
                 ]
+            },
+            GetPosts(_Resolve, _Reject) {
+                this.$store.state.database.collection('Posts').get().then(_Response => {
+                    _Response.forEach(doc => {
+                        this.GetCover(doc.data().Cover).then(_Resolve => {
+                            this.Posts.push({
+                                No:  doc.data().No,
+                                Cover: _Resolve,
+                                Title: doc.data().Title,
+                                Slug: doc.data().Slug,
+                                Excerpt: doc.data().Excerpt,
+                                PostTime: doc.data().PostTime.toMillis(),
+                                Tags: doc.data().Tags
+                            })
+                        })
+                    })
+                    _Resolve()
+                }).catch((_Error) => {
+                    _Reject(_Error)
+                })
             },
             GetCover(_Path) {
                 return new Promise((_Resolve, _Reject) => {
@@ -89,15 +83,8 @@
                     });
                 })
             },
-            SetCover(_Resolve, _Reject) {
-                this.Posts.forEach((_Data, _Index) => {
-                    this.GetCover(_Data.Cover).then((_Resolve) => {
-                        this.Posts[_Index].Cover = _Resolve
-                    }).catch((_Error) => {
-                        this.Posts[_Index].Cover = '404'
-                    })
-                })
-                _Resolve()
+            ComingSoon(_Column = 3) {
+                return parseInt(_Column - this.Posts.length)
             }
         }
     }

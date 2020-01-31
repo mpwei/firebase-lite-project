@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import VueProgressBar from 'vue-progressbar'
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
+import VueMoment from 'vue-moment'
 import './vendor.js'
 
 // Install BootstrapVue
@@ -24,6 +25,8 @@ Vue.use(VueProgressBar, {
 
 Vue.component('Loading', () => import("./components/Common/Loading"))
 Vue.component('ContentWrapper', () => import("@/components/Layout/ContentWrapper"))
+
+Vue.use(VueMoment)
 
 Vue.config.productionTip = false
 
