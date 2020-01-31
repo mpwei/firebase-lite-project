@@ -8,8 +8,10 @@
 npm install
 ```
 
-##設定Firebase
+### 設定Firebase
+
 於src/firebase新增檔案config.js
+
 ```
 export default {
 	apiKey: YOUR-VALUE,
