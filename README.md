@@ -8,6 +8,20 @@
 npm install
 ```
 
+##設定Firebase
+於src/firebase新增檔案config.js
+```
+export default {
+	apiKey: YOUR-VALUE,
+	authDomain: YOUR-VALUE,
+	databaseURL: YOUR-VALUE,
+	projectId: YOUR-VALUE,
+	storageBucket: YOUR-VALUE,
+	messagingSenderId: YOUR-VALUE,
+	appID: YOUR-VALUE,
+}
+```
+
 ### 執行開發環境
 ```
 npm run serve
