@@ -14,7 +14,6 @@
     },
     methods: {
       GetData() {
-        console.log('xxx')
       }
     }
   }
