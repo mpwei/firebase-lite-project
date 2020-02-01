@@ -12,15 +12,20 @@ import VueFirestore from 'vue-firestore'
 import Firebase from 'firebase'
 import FirebaseConfig from './config'
 
-require('firebase/firestore')
-
 Vue.use(VueFirestore)
 
 const firebaseApp = Firebase.initializeApp({
     apiKey: FirebaseConfig.apiKey,
+    authDomain: FirebaseConfig.authDomain,
     storageBucket: FirebaseConfig.storageBucket,
-    projectId: FirebaseConfig.projectId
+    projectId: FirebaseConfig.projectId,
+    appId: FirebaseConfig.appId,
+    messagingSenderId: FirebaseConfig.messagingSenderId,
+    measurementId: FirebaseConfig.measurementId
 })
 
+firebaseApp.analytics()
+
 export const firestore = firebaseApp.firestore(),
-    storage = firebaseApp.storage()
+    storage = firebaseApp.storage(),
+    analytics = firebaseApp.analytics()
