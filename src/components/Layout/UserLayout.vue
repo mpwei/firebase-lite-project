@@ -14,7 +14,7 @@
         components: {
             Header: () => import("./Header"),
             Footer: () => import("./Footer"),
-            Loading:() => import("../Common/Loading")
+            Loading: () => import("../Common/Loading")
         },
         mounted() {
             this.$store.dispatch("LoadingStart", this.$root)
@@ -35,30 +35,21 @@
                 ]
             },
             GetWebsiteConfig(_Resolve, _Reject) {
-                let self = this
-                this.$store.state.database.collection('Config').doc('Website').get().then(_Response => {
-                    self.$store.state.profile.website = _Response.data()
+                this.$store.dispatch("GetWebsiteConfig").then(() => {
                     _Resolve()
                 }).catch(function (_Error) {
                     _Reject(_Error)
-                });
+                })
             },
             GetLogo(_Resolve, _Reject) {
-                let self = this
-                this.$store.state.storage.ref().child(self.$store.state.profile.logo).getDownloadURL().then(URL => {
-                    self.$store.state.profile.logo = URL
+                this.$store.dispatch("GetLogo").then(() => {
                     _Resolve()
-                }).catch(_Error => {
+                }).catch(function (_Error) {
                     _Reject(_Error)
-                });
+                })
             },
             GetMenu(_Resolve, _Reject) {
-                let self = this
-                self.$store.state.profile.menu = []
-                this.$store.state.database.collection('Menu').where('Open', '==', true).orderBy('No', 'asc').get().then(_Response => {
-                    _Response.forEach(doc => {
-                        self.$store.state.profile.menu.push(doc.data())
-                    })
+                this.$store.dispatch("GetMenu").then(() => {
                     _Resolve()
                 }).catch(function (_Error) {
                     _Reject(_Error)

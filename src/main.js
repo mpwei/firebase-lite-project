@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import language from './language'
 import VueProgressBar from 'vue-progressbar'
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import VueMoment from 'vue-moment'
@@ -33,5 +34,6 @@ Vue.config.productionTip = false
 new Vue({
 	router,
 	store,
+	i18n: language,
 	render: h => h(App)
 }).$mount('#app')
