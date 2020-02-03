@@ -47,7 +47,7 @@ export default new Vuex.Store({
                     return false
                 }
             }
-            if (!(_Context.state.langDictionary[_Context.state.Locale])) {
+            if (!(_Context.state.langDictionary[_Context.state.language])) {
                 return _Context.state.langFile[_Context.state.language]().then(Messages => {
                     _Context.state.langDictionary[_Context.state.language] = Messages
                 })

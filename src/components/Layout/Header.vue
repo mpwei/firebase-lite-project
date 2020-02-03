@@ -22,7 +22,7 @@
                                     target="_blank">
                             <i class="fa" :class="'fa-' + value.icon"/>
                         </b-nav-item>
-                        <b-nav-item-dropdown text="Lang" right>
+                        <b-nav-item-dropdown class="rounded-0" text="Lang" right>
                             <template slot="button-content">
                                 <i class="fa fa-globe" aria-hidden="true"></i>
                             </template>
