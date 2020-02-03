@@ -14,7 +14,7 @@
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
                         <b-nav-item class="mr-lg-3" :key="index" v-for="(value,index) in $store.state.profile.menu" :to="value.Url"
-                                    :class="{'active': value.Url === $route.path}">{{value.Name}}
+                                    :class="{'active': value.Url === $route.path}">{{value.Name[$store.state.language]}}
                         </b-nav-item>
                     </b-navbar-nav>
                     <b-navbar-nav class="ml-auto d-none d-md-flex">
@@ -22,6 +22,12 @@
                                     target="_blank">
                             <i class="fa" :class="'fa-' + value.icon"/>
                         </b-nav-item>
+                        <b-nav-item-dropdown text="Lang" right>
+                            <template slot="button-content">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                            </template>
+                            <b-dropdown-item :key="index" v-for="(data,index) in $store.state.allowLang" @click="ChangeLanguage(data)">{{$t("Language." + data)}}</b-dropdown-item>
+                        </b-nav-item-dropdown>
                     </b-navbar-nav>
                 </b-collapse>
             </div>
@@ -53,11 +59,12 @@
         },
         methods: {
             Init() {
-                return [
-                    // new Promise((_Resolve, _Reject) => this.GetLogo(_Resolve, _Reject)),
-                    // new Promise((_Resolve, _Reject) => this.GetMenu(_Resolve, _Reject)),
-                ]
             },
+            ChangeLanguage(_lang) {
+                this.$store.dispatch('LoadLanguage', _lang).then(_Response => {
+                    this.$i18n.locale = _lang
+                })
+            }
         }
     }
 </script>

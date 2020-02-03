@@ -1,4 +1,8 @@
 {
+	"Language": {
+		"en-us":"English",
+		"zh-tw":"繁體中文"
+	},
 	"message": {
 		"hello": "hello world",
 		"greeting": "good morning"
