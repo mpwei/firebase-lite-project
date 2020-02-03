@@ -1,23 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {analytics, firestore, storage} from '../firebase'
+import {analytics, firestore, storage, auth} from '../firebase'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
         language: 'zh-tw',
-        allowLang: ['zh-tw','en-us'],
+        allowLang: ['zh-tw', 'en-us'],
         langDictionary: [],
         langFile: [],
         database: firestore,
         storage: storage,
+        auth: auth,
         analytics: analytics,
         loading: false,
         profile: {
             logo: '',
             menu: [],
-            website: [],
+            website: {
+                Designer: [],
+                Subtitle: [],
+                Title: [],
+                Year: 1970
+            },
         }
     },
     mutations: {
@@ -68,7 +74,12 @@ export default new Vuex.Store({
         GetWebsiteConfig(_Context) {
             return new Promise((_Resolve, _Reject) => {
                 _Context.state.database.collection('Config').doc('Website').get().then(_Response => {
-                    _Context.state.profile.website = _Response.data()
+                    _Context.state.profile.website = {
+                        Designer: _Response.data().Designer,
+                        Subtitle: _Response.data().Subtitle,
+                        Title: _Response.data().Title,
+                        Year: _Response.data().Year
+                    }
                     _Resolve()
                 }).catch(function (_Error) {
                     _Reject(_Error)

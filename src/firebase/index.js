@@ -28,4 +28,5 @@ firebaseApp.analytics()
 
 export const firestore = firebaseApp.firestore(),
     storage = firebaseApp.storage(),
-    analytics = firebaseApp.analytics()
+    analytics = firebaseApp.analytics(),
+    auth = firebaseApp.auth()

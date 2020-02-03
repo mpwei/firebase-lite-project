@@ -29,9 +29,9 @@
         methods: {
             Init() {
                 return [
-                    new Promise((_Resolve, _Reject) => this.GetWebsiteConfig(_Resolve, _Reject)),
                     new Promise((_Resolve, _Reject) => this.GetLogo(_Resolve, _Reject)),
                     new Promise((_Resolve, _Reject) => this.GetMenu(_Resolve, _Reject)),
+                    new Promise((_Resolve, _Reject) => this.GetWebsiteConfig(_Resolve, _Reject)),
                 ]
             },
             GetWebsiteConfig(_Resolve, _Reject) {
