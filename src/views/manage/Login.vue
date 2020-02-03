@@ -7,6 +7,9 @@
         <span class="d-block">Admin Login</span>
       </h1>
       {{ $t("message.hello") }}
+
+      <button @click="changelang('zh-tw')">zh-tw</button>
+      <button @click="changelang('en-us')">en-us</button>
     </section>
   </ContentWrapper>
 </template>
@@ -21,6 +24,11 @@
     mounted() {
     },
     methods: {
+      changelang(_lang) {
+        this.$store.dispatch('LoadLanguage', _lang).then(_Response => {
+          this.$i18n.locale = _lang
+        })
+      }
     }
   }
 </script>

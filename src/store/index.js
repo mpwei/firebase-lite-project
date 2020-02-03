@@ -7,32 +7,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         language: 'zh-tw',
-        langDictionary: {
-            'en': {
-                message: {
-                    hello: 'hello world',
-                    greeting: 'good morning'
-                }
-            },
-            'ja': {
-                message: {
-                    hello: 'こんにちは、世界',
-                    greeting: 'おはようございます'
-                }
-            },
-            'zh-tw': {
-                message: {
-                    hello: '你好',
-                    greeting: '哈囉'
-                }
-            },
-            'zh-cn': {
-                message: {
-                    hello: '你好2',
-                    greeting: '雷侯'
-                }
-            },
-        },
+        allowLang: ['zh-tw','en-us'],
+        langDictionary: [],
+        langFile: [],
         database: firestore,
         storage: storage,
         analytics: analytics,
@@ -44,12 +21,34 @@ export default new Vuex.Store({
         }
     },
     mutations: {
+        SetLanguage(_State) {
+            //取使用者環境
+            let CustomLocale = (navigator.language || navigator.browserLanguage).toLowerCase()
+            if (_State.allowLang.includes(CustomLocale)) {
+                _State.language = CustomLocale
+            }
+
+            //載入語系列表
+            let AllowLanguage = JSON.parse(JSON.stringify(_State.allowLang))
+            AllowLanguage.forEach(_Language => {
+                _State.langFile[_Language] = () => import('../language/dictionary/' + _Language)
+            })
+
+            //載入預設語系
+            this.dispatch("LoadLanguage")
+        },
     },
     actions: {
         LoadLanguage(_Context, _Language = null) {
-            _Context.state.language = _Language
-            if (!(_Context.state.langDictionary[_Context.state.language])) {
-                return _Context.state.langDictionary[_Context.state.language]().then(Messages => {
+            if (_Language) {
+                if (_Context.state.allowLang.includes(_Language)) {
+                    _Context.state.language = _Language
+                } else {
+                    return false
+                }
+            }
+            if (!(_Context.state.langDictionary[_Context.state.Locale])) {
+                return _Context.state.langFile[_Context.state.language]().then(Messages => {
                     _Context.state.langDictionary[_Context.state.language] = Messages
                 })
             }

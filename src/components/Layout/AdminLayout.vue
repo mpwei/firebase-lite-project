@@ -13,7 +13,6 @@
         mounted() {
             this.$store.dispatch("LoadingStart", this.$root)
             Promise.all(this.Init()).then(() => {
-                console.log(this.$store.state.profile.website)
                 this.$store.dispatch("LoadingEnd", this.$root)
             }).catch(_Error => {
                 alert(_Error)
