@@ -59,9 +59,25 @@ h1, h2, h3, h4, h5,
     content: "｜";
     margin: 0 0.33rem;
 }
+
 .ArticleList .card {
     cursor: pointer;
 }
+
 .ArticleList .card-footer > span {
     font-size: small;
+}
+
+.form-control {
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #aaa;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0.5rem 0.2rem rgba(39, 39, 40, 0.25);
+    box-shadow: 0 0 0.5rem 0.2rem rgba(39, 39, 40, 0.25);
 }

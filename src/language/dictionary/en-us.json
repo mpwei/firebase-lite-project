@@ -1,10 +1,25 @@
 {
 	"Language": {
 		"en-us":"English",
-		"zh-tw":"繁體中文"
+		"zh-tw":"繁體中文",
+		"": ""
 	},
-	"message": {
-		"hello": "hello world",
-		"greeting": "good morning"
+	"Manage": {
+		"ManageLogin": "Admin Login",
+		"Account": "Account",
+		"Password": "Password",
+		"Remember": "Remember me",
+		"Login": "Login",
+		"": ""
+	},
+	"Message": {
+		"Success": "Success",
+		"Warning": "Warning",
+		"Error": "Error",
+		"Info": "Info",
+		"Manage": {
+			"L-0001": "Account or Password is incorrect",
+			"L-0002": "You're success to login!"
+		}
 	}
 }

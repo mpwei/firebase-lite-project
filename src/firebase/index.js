@@ -1,11 +1,11 @@
 /**
  * Firebase
- *
- * @since 0.0.1
- * @version 0.0.1
- * @author MPWEI
- * @date 2020/01/23
- */
+*
+* @since 0.0.1
+* @version 0.0.1
+* @author MPWEI
+* @date 2020/01/23
+*/
 
 import Vue from 'vue'
 import VueFirestore from 'vue-firestore'

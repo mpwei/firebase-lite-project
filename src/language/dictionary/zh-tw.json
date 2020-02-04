@@ -1,10 +1,28 @@
 {
 	"Language": {
 		"en-us":"English",
-		"zh-tw":"繁體中文"
+		"zh-tw":"繁體中文",
+		"": ""
 	},
-	"message": {
-		"hello": "你好",
-		"greeting": "哈囉"
+	"Manage": {
+		"ManageLogin": "管理員登入",
+		"Account": "管理員帳號",
+		"Password": "管理員密碼",
+		"Remember": "記住我",
+		"Login": "登入",
+		"": ""
+	},
+	"Message": {
+		"Success": "成功",
+		"Warning": "警告",
+		"Error": "錯誤",
+		"Info": "提示",
+		"Manage": {
+			"auth/invalid-email": "帳號不符規定",
+			"auth/user-disabled": "此帳號已停用！",
+			"auth/user-not-found": "找不到該使用者",
+			"auth/wrong-password": "密碼錯誤，請重新輸入",
+			"": ""
+		}
 	}
 }

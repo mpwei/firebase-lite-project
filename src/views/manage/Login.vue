@@ -1,31 +1,32 @@
 <template>
   <ContentWrapper id="AdminLogin">
     <section class="container my-5">
-      <form class="form-signin">
-        <div class="text-center mb-4">
-          <img :src="$store.state.profile.logo" :alt="$store.state.profile.website.Title[$store.state.language]" class="mb-4">
-          <h1 class="h3 mb-3 font-weight-bold">管理員登入</h1>
-          <p>
-          </p>
+      <form class="form-signin" @submit.prevent="DoLogin">
+        <div class="mb-4">
+          <img :src="$store.state.profile.logo" :alt="$store.state.profile.website.Title[$store.state.language]" class="mb-4 mx-auto d-block">
+          <h1 class="text-center h3 mb-3 font-weight-bold">{{$t('Manage.ManageLogin')}}</h1>
+          <b-alert :show="Error" variant="danger" fade dismissible @dismissed="Error = false">
+            {{ErrorMessage}}
+          </b-alert>
         </div>
 
         <div class="form-label-group">
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-          <label for="inputEmail">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" v-model="Account" :placeholder="$t('Manage.Account')" required autofocus>
+          <label for="inputEmail">{{$t('Manage.Account')}}</label>
         </div>
 
         <div class="form-label-group">
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          <label for="inputPassword">Password</label>
+          <input type="password" id="inputPassword" class="form-control" v-model="Password" :placeholder="$t('Manage.Password')" required>
+          <label for="inputPassword">{{$t('Manage.Password')}}</label>
         </div>
 
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me" v-model="RememberMe"> {{$t('Manage.Remember')}}
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted text-center">Copyright © {{$store.state.profile.website.Year}}</p>
+        <button class="btn btn-lg btn-dark btn-block shadow" type="submit">{{$t('Manage.Login')}}</button>
+        <p class="mt-5 mb-3 text-muted text-center">Copyright © {{$store.state.profile.website.Year}} {{$store.state.profile.website.Title[$store.state.language]}}</p>
       </form>
     </section>
   </ContentWrapper>
@@ -36,20 +37,23 @@
     name: 'AdminLogin',
     data() {
       return {
+        Account: '',
+        Password: '',
+        RememberMe: true,
+        Error: false,
+        ErrorMessage: '',
       }
     },
     mounted() {
     },
     methods: {
-      DoLogin(_Account, _Password) {
-        this.$store.state.auth.signInWithEmailAndPassword(_Account, _Password).then(_Response => {
+      DoLogin() {
+        this.$store.state.auth.signInWithEmailAndPassword(this.Account, this.Password).then(_Response => {
           console.log(_Response)
+          alert('success')
         }).catch(_Error => {
-          // Handle Errors here.
-          const errorCode = _Error.code;
-          const errorMessage = _Error.message;
-          alert(errorCode + errorMessage)
-          // ...
+          this.Error = true
+          this.ErrorMessage = this.$t('Message.Manage.' + _Error.code)
         });
       }
     }
