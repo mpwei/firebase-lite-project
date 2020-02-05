@@ -47,27 +47,6 @@ export default new Vuex.Store({
 
             //載入預設語系
             this.dispatch("LoadLanguage")
-        },
-        AuthState(_State) {
-            _State.auth.onAuthStateChanged((_Auth) => {
-                if (_Auth) {
-                    _State.manage.login = true
-                    _State.manage.uid = _Auth.uid
-                    _State.manage.data = {
-                        displayName: _Auth.displayName,
-                        photoURL: _Auth.photoURL,
-                        email: _Auth.email,
-                        emailVerified: _Auth.emailVerified,
-                        phoneNumber: _Auth.phoneNumber,
-                        isAnonymous: _Auth.isAnonymous,
-                        metadata: _Auth.metadata,
-                    }
-                } else {
-                    _State.manage.login = false
-                    _State.manage.uid = ''
-                    _State.manage.data = []
-                }
-            })
         }
     },
     actions: {
@@ -136,11 +115,31 @@ export default new Vuex.Store({
                 })
             })
         },
-        // CheckAuth(_Context) {
-        //     return new Promise((_Resolve, _Reject) => {
-        //         _Context.state.manage
-        //     })
-        // }
+        CheckAuth(_Context) {
+            return new Promise((_Resolve,_Reject) => {
+                _Context.state.auth.onAuthStateChanged(_Auth => {
+                    if (_Auth) {
+                        _Context.state.manage.login = true
+                        _Context.state.manage.uid = _Auth.uid
+                        _Context.state.manage.data = {
+                            displayName: _Auth.displayName,
+                            photoURL: _Auth.photoURL,
+                            email: _Auth.email,
+                            emailVerified: _Auth.emailVerified,
+                            phoneNumber: _Auth.phoneNumber,
+                            isAnonymous: _Auth.isAnonymous,
+                            metadata: _Auth.metadata,
+                        }
+                        _Resolve(_Context.state.manage.login)
+                    } else {
+                        _Context.state.manage.login = false
+                        _Context.state.manage.uid = ''
+                        _Context.state.manage.data = []
+                        _Reject(_Context.state.manage.login)
+                    }
+                })
+            })
+        }
     },
     modules: {}
 })

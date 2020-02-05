@@ -15,9 +15,6 @@ const routes = [
     //訪客頁面
     {
         path: '/',
-        beforeEnter: (_To, _From, _Next) => {
-            _Next()
-        },
         component: () => import('../components/Layout/UserLayout.vue'),
         children: [
             {
@@ -82,16 +79,6 @@ const routes = [
     {
         path: '/',
         component: () => import('../components/Layout/AdminLayout.vue'),
-        beforeEnter: (_To, _From, _Next) => {
-            let Root = router.app
-            if ((_To.meta.Auth === true && !Root.$store.state.manage.login)) {
-                _Next({
-                    path: '/manage/login',
-                })
-            } else {
-                _Next()
-            }
-        },
         children: [
             {
                 path: '/manage/login',

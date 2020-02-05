@@ -5,7 +5,7 @@
         <div class="mb-4">
           <img :src="$store.state.profile.logo" :alt="$store.state.profile.website.Title[$store.state.language]" class="mb-4 mx-auto d-block">
           <h1 class="text-center h3 mb-3 font-weight-bold">{{$t('Manage.ManageLogin')}}</h1>
-          <b-alert class="shadow" :show="Error" variant="danger" fade dismissible @dismissed="Error = false">
+          <b-alert class="shadow" :show="Error" :variant="Variant" fade dismissible @dismissed="Error = false">
             {{ErrorMessage}}
           </b-alert>
         </div>
@@ -25,7 +25,6 @@
           </label>
         </div>
         <button class="btn btn-lg btn-dark btn-block shadow" type="submit">{{$t('Manage.Login')}}</button>
-        <button class="btn btn-lg btn-dark btn-block shadow" type="button" @click="Logout">logout</button>
         <p class="mt-5 mb-3 text-muted text-center">Copyright © {{$store.state.profile.website.Year}} {{$store.state.profile.website.Title[$store.state.language]}}</p>
       </form>
     </section>
@@ -33,6 +32,8 @@
 </template>
 
 <script>
+  import store from "@/store";
+
   export default {
     name: 'AdminLogin',
     data() {
@@ -42,13 +43,27 @@
         RememberMe: true,
         Error: false,
         ErrorMessage: '',
+        Variant: 'danger'
       }
     },
     computed: {
     },
     mounted() {
+      this.$root.$Progress.start()
+      Promise.all(this.Init()).then(() => {
+        this.$root.$Progress.finish()
+      }).catch(_Error => {
+        alert(_Error)
+        this.$root.$Progress.fail()
+        this.$router.push('/error')
+      })
     },
     methods: {
+      Init() {
+        return [
+          new Promise((_Resolve) => this.CheckAuth(_Resolve)),
+        ]
+      },
       DoLogin() {
         this.$root.$Progress.start()
         this.$store.state.auth.signInWithEmailAndPassword(this.Account, this.Password).then(_Response => {
@@ -57,16 +72,23 @@
         }).catch(_Error => {
           this.$root.$Progress.fail()
           this.Error = true
+          this.Variant = 'danger'
           this.ErrorMessage = this.$t('Message.Manage.' + _Error.code)
         })
       },
-      Logout() {
-        this.$store.state.auth.signOut().then(_Response => {
-          alert('success logout')
+      CheckAuth(_Resolve) {
+        this.$store.dispatch('CheckAuth').then(_Response => {
+          this.$router.push('/manage/dashboard')
+          _Resolve()
         }).catch(_Error => {
-          alert(_Error)
+          if (this.$route.query.redirect) {
+            this.Error = true
+            this.Variant = 'info'
+            this.ErrorMessage = this.$t('Message.Manage.auth/expired')
+          }
+          _Resolve()
         })
-      }
+      },
     }
   }
 </script>

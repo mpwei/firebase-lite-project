@@ -22,6 +22,7 @@
 			"auth/user-disabled": "此帳號已停用！",
 			"auth/user-not-found": "找不到該使用者",
 			"auth/wrong-password": "密碼錯誤，請重新輸入",
+			"auth/expired": "憑證已逾時，請重新登入",
 			"": ""
 		}
 	}

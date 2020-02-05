@@ -11,9 +11,6 @@ import './vendor.js'
 // Set Language
 store.commit('SetLanguage')
 
-//Auth Listening
-store.commit('AuthState')
-
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

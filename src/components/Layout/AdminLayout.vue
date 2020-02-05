@@ -7,6 +7,7 @@
 </template>
 
 <script>
+    import store from '@/store'
     import '@/assets/css/manage.css'
 
     export default {
@@ -20,6 +21,20 @@
                 alert(_Error)
                 this.$store.dispatch("LoadingFail", this.$root)
                 this.$router.push('/error')
+            })
+        },
+        beforeRouteEnter (_To, _From, _Next) {
+            store.dispatch('CheckAuth').then(_Resolve => {
+                _Next()
+            }).catch(_Reject => {
+                (_To.meta.Auth) ? _Next({path: '/manage/login?redirect=true'}) : _Next()
+            })
+        },
+        beforeRouteUpdate (_To, _From, _Next) {
+            store.dispatch('CheckAuth').then(_Resolve => {
+                _Next()
+            }).catch(_Reject => {
+                (_To.meta.Auth) ? _Next({path: '/manage/login?redirect=true'}) : _Next()
             })
         },
         methods: {

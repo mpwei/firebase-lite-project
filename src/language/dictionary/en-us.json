@@ -18,8 +18,12 @@
 		"Error": "Error",
 		"Info": "Info",
 		"Manage": {
-			"L-0001": "Account or Password is incorrect",
-			"L-0002": "You're success to login!"
+			"auth/invalid-email": "Account is invalid",
+			"auth/user-disabled": "Account is disabled.",
+			"auth/user-not-found": "Not found this account.",
+			"auth/wrong-password": "Wrong password, please enter password again.",
+			"auth/expired": "Certificate is expired, please login again.",
+			"": ""
 		}
 	}
 }
