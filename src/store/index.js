@@ -24,6 +24,11 @@ export default new Vuex.Store({
                 Title: [],
                 Year: 1970
             },
+        },
+        manage: {
+            login: false,
+            uid: '',
+            data: []
         }
     },
     mutations: {
@@ -43,6 +48,27 @@ export default new Vuex.Store({
             //載入預設語系
             this.dispatch("LoadLanguage")
         },
+        AuthState(_State) {
+            _State.auth.onAuthStateChanged((_Auth) => {
+                if (_Auth) {
+                    _State.manage.login = true
+                    _State.manage.uid = _Auth.uid
+                    _State.manage.data = {
+                        displayName: _Auth.displayName,
+                        photoURL: _Auth.photoURL,
+                        email: _Auth.email,
+                        emailVerified: _Auth.emailVerified,
+                        phoneNumber: _Auth.phoneNumber,
+                        isAnonymous: _Auth.isAnonymous,
+                        metadata: _Auth.metadata,
+                    }
+                } else {
+                    _State.manage.login = false
+                    _State.manage.uid = ''
+                    _State.manage.data = []
+                }
+            })
+        }
     },
     actions: {
         LoadLanguage(_Context, _Language = null) {
@@ -109,7 +135,12 @@ export default new Vuex.Store({
                     _Reject(_Error)
                 })
             })
-        }
+        },
+        // CheckAuth(_Context) {
+        //     return new Promise((_Resolve, _Reject) => {
+        //         _Context.state.manage
+        //     })
+        // }
     },
     modules: {}
 })

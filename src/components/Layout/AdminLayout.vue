@@ -7,6 +7,8 @@
 </template>
 
 <script>
+    import '@/assets/css/manage.css'
+
     export default {
         name: 'AdminLayout',
         components: {},

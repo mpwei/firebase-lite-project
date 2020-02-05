@@ -9,6 +9,8 @@
 </template>
 
 <script>
+    import '@/assets/css/user.css'
+
     export default {
         name: 'UserLayout',
         components: {

@@ -60,9 +60,9 @@
         methods: {
             Init() {
             },
-            ChangeLanguage(_lang) {
-                this.$store.dispatch('LoadLanguage', _lang).then(_Response => {
-                    this.$i18n.locale = _lang
+            ChangeLanguage(_Language) {
+                this.$store.dispatch('LoadLanguage', _Language).then(_Response => {
+                    this.$i18n.locale = _Language
                 })
             }
         }

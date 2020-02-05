@@ -83,7 +83,8 @@ const routes = [
         path: '/',
         component: () => import('../components/Layout/AdminLayout.vue'),
         beforeEnter: (_To, _From, _Next) => {
-            if (_To.meta.Auth === true) {
+            let Root = router.app
+            if ((_To.meta.Auth === true && !Root.$store.state.manage.login)) {
                 _Next({
                     path: '/manage/login',
                 })
