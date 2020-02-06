@@ -1,5 +1,5 @@
 <template>
-    <section class="container mb-4">
+    <section class="container my-4">
         <b-card-group class="ArticleList" deck>
             <b-card no-body class="rounded-0" v-for="(value,index) in Posts" :key="index" @click="$router.push({ name: 'posts', params: { slug: value.Slug }})">
                 <b-card-img-lazy class="rounded-0" v-bind="mainProps" :src="value.Cover" :alt="value.Title" />

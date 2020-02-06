@@ -10,6 +10,7 @@
 		"Password": "管理員密碼",
 		"Remember": "記住我",
 		"Login": "登入",
+		"Logout": "登出",
 		"": ""
 	},
 	"Message": {
@@ -20,9 +21,11 @@
 		"Manage": {
 			"auth/invalid-email": "帳號不符規定",
 			"auth/user-disabled": "此帳號已停用！",
-			"auth/user-not-found": "找不到該使用者",
-			"auth/wrong-password": "密碼錯誤，請重新輸入",
-			"auth/expired": "憑證已逾時，請重新登入",
+			"auth/user-not-found": "找不到該使用者！",
+			"auth/wrong-password": "密碼錯誤，請重新輸入！",
+			"auth/expired": "憑證已逾時，請重新登入。",
+			"auth/unexpected-error": "發生短暫錯誤，請稍後再試。",
+			"logout/success-logout": "您已成功登出。",
 			"": ""
 		}
 	}

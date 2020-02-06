@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import swalPlugin from './plugins/SweetAlert2'
 import language from './language'
 import VueProgressBar from 'vue-progressbar'
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
@@ -15,7 +16,7 @@ store.commit('SetLanguage')
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
-//Progress Bar
+// Progress Bar
 Vue.use(VueProgressBar, {
 	color: '#ffc107',
 	failedColor: 'red',
@@ -31,6 +32,7 @@ Vue.component('Loading', () => import("./components/Common/Loading"))
 Vue.component('ContentWrapper', () => import("@/components/Layout/ContentWrapper"))
 
 Vue.use(VueMoment)
+Vue.use(swalPlugin)
 
 Vue.config.productionTip = false
 

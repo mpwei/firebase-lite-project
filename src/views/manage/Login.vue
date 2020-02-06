@@ -1,6 +1,6 @@
 <template>
   <ContentWrapper id="AdminLogin">
-    <section class="container my-5">
+    <section class="container my-lg-5">
       <form class="form-signin" @submit.prevent="DoLogin">
         <div class="mb-4">
           <img :src="$store.state.profile.logo" :alt="$store.state.profile.website.Title[$store.state.language]" class="mb-4 mx-auto d-block">
@@ -67,13 +67,33 @@
       DoLogin() {
         this.$root.$Progress.start()
         this.$store.state.auth.signInWithEmailAndPassword(this.Account, this.Password).then(_Response => {
-          this.$root.$Progress.finish()
-          this.$router.push('/manage/dashboard')
+          this.WriteLoginRecord(_Response).then(_Resolve => {
+            this.$root.$Progress.finish()
+            this.$router.push('/manage/dashboard')
+          }).catch(_Reject => {
+            this.$root.$Progress.fail()
+            this.Error = true
+            this.Variant = 'danger'
+            this.ErrorMessage = this.$t('Message.Manage.auth/unexpected-error')
+          })
         }).catch(_Error => {
           this.$root.$Progress.fail()
           this.Error = true
           this.Variant = 'danger'
           this.ErrorMessage = this.$t('Message.Manage.' + _Error.code)
+        })
+      },
+      WriteLoginRecord(_Response) {
+        return new Promise((_Resolve, _Reject) => {
+          this.$store.state.database.collection('LoginRecord').add({
+            Account: this.Account,
+            Uid: _Response.user.uid,
+            LoginTime: _Response.user.metadata.b
+          }).then(_Response => {
+            _Resolve()
+          }).catch(_Error => {
+            _Reject(_Error)
+          })
         })
       },
       CheckAuth(_Resolve) {

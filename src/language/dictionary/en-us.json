@@ -10,6 +10,7 @@
 		"Password": "Password",
 		"Remember": "Remember me",
 		"Login": "Login",
+		"Logout": "Logout",
 		"": ""
 	},
 	"Message": {
@@ -23,6 +24,8 @@
 			"auth/user-not-found": "Not found this account.",
 			"auth/wrong-password": "Wrong password, please enter password again.",
 			"auth/expired": "Certificate is expired, please login again.",
+			"auth/unexpected-error": "Unexpected error, please try again later.",
+			"logout/success-logout": "You are success to logout!",
 			"": ""
 		}
 	}

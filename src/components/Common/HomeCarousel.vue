@@ -1,5 +1,5 @@
 <template>
-    <section v-if="Carousel.Items.length > 0" class="container d-none d-md-block mb-4">
+    <section v-if="Carousel.Items.length > 0" class="container d-none d-md-block my-4">
         <b-carousel id="IndexCarousel" v-model="Carousel.Slide" :interval="6000"  @sliding-start="onSlideStart" @sliding-end="onSlideEnd"
         >
             <b-carousel-slide v-for="(value, key) in Carousel.Items" :key="key">
