@@ -105,8 +105,7 @@ export default new Vuex.Store({
         GetStorageImages(_Context, _Path) {
             return new Promise((_Resolve, _Reject) => {
                 _Context.state.storage.ref().child(_Path).getDownloadURL().then(URL => {
-                    _Context.state.profile.logo = URL
-                    _Resolve()
+                    _Resolve(URL)
                 }).catch(_Error => {
                     _Reject(_Error)
                 })

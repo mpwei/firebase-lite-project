@@ -24,7 +24,7 @@
                         </b-nav-item>
                         <b-nav-item-dropdown class="rounded-0" text="Lang" right>
                             <template slot="button-content">
-                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                <i class="fa fa-globe" aria-hidden="true" />
                             </template>
                             <b-dropdown-item :key="index" v-for="(data,index) in $store.state.allowLang" @click="ChangeLanguage(data)">{{$t("Language." + data)}}</b-dropdown-item>
                         </b-nav-item-dropdown>

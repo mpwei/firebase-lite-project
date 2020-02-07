@@ -5,9 +5,9 @@
 		"": ""
 	},
 	"Manage": {
-		"ManageLogin": "管理員登入",
-		"Account": "管理員帳號",
-		"Password": "管理員密碼",
+		"ManageLogin": "登入",
+		"Account": "帳號",
+		"Password": "密碼",
 		"Remember": "記住我",
 		"Login": "登入",
 		"Logout": "登出",
