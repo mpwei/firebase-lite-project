@@ -1,6 +1,6 @@
 <template>
     <ContentWrapper id="about">
-        <section class="container">
+        <section class="container my-4">
             <h1>關於這裡</h1>
             <p>{{Post.Content}}</p>
         </section>

@@ -8,6 +8,7 @@ import VueProgressBar from 'vue-progressbar'
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import VueMoment from 'vue-moment'
 import './vendor.js'
+import './function.js'
 
 // Set Language
 store.commit('SetLanguage')

@@ -1,6 +1,6 @@
 <template>
     <ContentWrapper id="post">
-        <section class="container">
+        <section class="container my-4">
             <h1>文章</h1>
             {{$route.path}}
             {{$route.params}}

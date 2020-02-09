@@ -2,6 +2,7 @@
     <main>
         <Loading v-if="$store.state.loading"/>
         <vue-progress-bar/>
+        <AdminHeader v-if="($store.state.manage.login && $route.path!=='/manage/login')" />
         <router-view/>
     </main>
 </template>
@@ -12,7 +13,9 @@
 
     export default {
         name: 'AdminLayout',
-        components: {},
+        components: {
+            AdminHeader: () => import("./manage/AdminHeader"),
+        },
         mounted() {
             this.$store.dispatch("LoadingStart", this.$root)
             Promise.all(this.Init()).then(() => {

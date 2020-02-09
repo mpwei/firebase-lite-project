@@ -55,7 +55,6 @@
             }
         },
         mounted() {
-
         },
         methods: {
             Init() {

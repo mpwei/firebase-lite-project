@@ -14,8 +14,8 @@
     export default {
         name: 'UserLayout',
         components: {
-            Header: () => import("./Header"),
-            Footer: () => import("./Footer"),
+            Header: () => import("./user/Header"),
+            Footer: () => import("./user/Footer"),
             Loading: () => import("../Common/Loading")
         },
         mounted() {

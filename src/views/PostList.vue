@@ -1,6 +1,6 @@
 <template>
   <ContentWrapper id="postList">
-    <section class="container">
+    <section class="container my-4">
       <h1>文章列表</h1>
       {{$route.path}}
     </section>

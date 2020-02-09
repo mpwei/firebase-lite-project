@@ -121,6 +121,13 @@
     max-height: 30px;
 }
 
+#MainNav .dropdown-menu {
+    font-size: 0.875rem;
+    border-radius: 0;
+    -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
 @media (min-width: 1200px) {
     #MainNav .MainLeft .nav-item > a {
         padding-right: 1rem;
