@@ -17,6 +17,9 @@
                 </b-navbar-nav>
 
                 <b-navbar-nav class="MainRight ml-auto">
+                    <b-nav-item href="#" right v-b-tooltip.hover title="通知">
+                        <i class="fa fa-bell" />
+                    </b-nav-item>
                     <b-nav-item href="#" right v-b-tooltip.hover title="媒體櫃">
                         <i class="fa fa-image" />
                     </b-nav-item>

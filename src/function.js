@@ -12,20 +12,20 @@ import Vue from 'vue'
 Vue.use({
     install: (_Vue) => {
         _Vue.prototype.$Function = {
-            'ManagePermission': {
+            'ManageMenu': {
                 'DashBoard': {
                     'Open': true,
-                    'Sub': true,
+                    'Sub': false,
                     'Path': '/dashboard'
                 },
-                'ThemeSetting': {
+                'Theme': {
                     'Open': 'true',
                     'Sub': {
-                        'Carousel': {
+                        'ThemeCarousel': {
                             'Open': true,
                             'Path': '/theme/carousel'
                         },
-                        'CustomMenu': {
+                        'ThemeCustomMenu': {
                             'Open': true,
                             'Path': '/theme/menu'
                         }
@@ -39,10 +39,87 @@ Vue.use({
                 'Product': {
                     'Open': true,
                     'Sub': {
-
+                        'ProductList': {
+                            'Open': true,
+                            'Path': '/product/list'
+                        },
+                        'ProductAdd': {
+                            'Open': true,
+                            'Path': '/product/add'
+                        },
+                        'ProductCategory': {
+                            'Open': true,
+                            'Path': '/product/category'
+                        },
+                        'ProductAddCategory': {
+                            'Open': true,
+                            'Path': '/product/add_category'
+                        },
                     },
-                    'Path': '/order/list'
                 },
+                'Post': {
+                    'Open': true,
+                    'Sub': {
+                        'PostList': {
+                            'Open': true,
+                            'Path': '/post/list'
+                        },
+                        'PostAdd': {
+                            'Open': true,
+                            'Path': '/post/add'
+                        },
+                        'PostCategory': {
+                            'Open': true,
+                            'Path': '/post/category'
+                        },
+                        'PostAddCategory': {
+                            'Open': true,
+                            'Path': '/post/add_category'
+                        },
+                    },
+                },
+                'Member': {
+                    'Open': true,
+                    'Sub': {
+                        'MemberList': {
+                            'Open': true,
+                            'Path': '/member/list'
+                        },
+                        'MemberAdd': {
+                            'Open': true,
+                            'Path': '/member/add'
+                        },
+                        'AdminList': {
+                            'Open': true,
+                            'Path': '/admin/list'
+                        },
+                        'AdminAdd': {
+                            'Open': true,
+                            'Path': '/admin/add'
+                        },
+                        'MemberGroup': {
+                            'Open': false,
+                            'Path': '/member/group'
+                        },
+                        'AdminGroup': {
+                            'Open': false,
+                            'Path': '/member/group'
+                        },
+                    },
+                },
+                'MessageCenter': {
+                    'Open': true,
+                    'Sub': {
+                        'Customer': {
+                            'Open': true,
+                            'Path': '/message/customer'
+                        },
+                        'System': {
+                            'Open': true,
+                            'Path': '/message/system'
+                        },
+                    }
+                }
             }
         }
     }

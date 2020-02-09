@@ -3,6 +3,7 @@
         <section class="container text-center">
             <h1>總覽</h1>
         </section>
+        <pre>{{$Function.ManageMenu}}</pre>
     </ContentWrapper>
 </template>
 
