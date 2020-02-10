@@ -5,6 +5,7 @@ import store from './store'
 import swalPlugin from './plugins/SweetAlert2'
 import language from './language'
 import VueProgressBar from 'vue-progressbar'
+import VueLazyload from 'vue-lazyload'
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import VueMoment from 'vue-moment'
 import './vendor.js'
@@ -34,6 +35,7 @@ Vue.component('ContentWrapper', () => import("@/components/Layout/ContentWrapper
 
 Vue.use(VueMoment)
 Vue.use(swalPlugin)
+Vue.use(VueLazyload)
 
 Vue.config.productionTip = false
 

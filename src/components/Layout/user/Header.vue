@@ -3,7 +3,7 @@
         <b-navbar type="light" variant="white">
             <div class="container">
                 <b-navbar-brand to="/" class="site-logo mr-auto">
-                    <img :src="$store.state.profile.logo" alt="More Patient">
+                    <img v-lazy="$store.state.profile.logo" alt="More Patient">
                     <h1 class="d-inline ml-2">More Patient.</h1>
                 </b-navbar-brand>
             </div>
