@@ -7,26 +7,21 @@
             <b-navbar-toggle target="nav-collapse"/>
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="MainLeft">
-                    <b-nav-item to="/manage/dashboard">總覽</b-nav-item>
-                    <b-nav-item href="#">版面設定</b-nav-item>
-                    <b-nav-item href="#">訂單管理</b-nav-item>
-                    <b-nav-item href="#">商品管理</b-nav-item>
-                    <b-nav-item href="#">文章管理</b-nav-item>
-                    <b-nav-item href="#">顧客管理</b-nav-item>
-                    <b-nav-item href="#">訊息中心</b-nav-item>
+                    <template v-for="(value,index) in $Function.ManageMenu">
+                        <b-nav-item :key="index" v-if="value.Open" @click="SelectNav(index, value)">{{$t('Manage.Menu.' + index)}}</b-nav-item>
+                    </template>
                 </b-navbar-nav>
-
                 <b-navbar-nav class="MainRight ml-auto">
-                    <b-nav-item href="#" right v-b-tooltip.hover title="通知">
+                    <b-nav-item href="#" right v-b-tooltip.hover :title="$t('Manage.Alert')">
                         <i class="fa fa-bell" />
                     </b-nav-item>
-                    <b-nav-item href="#" right v-b-tooltip.hover title="媒體櫃">
+                    <b-nav-item href="#" right v-b-tooltip.hover :title="$t('Manage.MediaStore')">
                         <i class="fa fa-image" />
                     </b-nav-item>
-                    <b-nav-item href="#" right v-b-tooltip.hover title="系統設定">
+                    <b-nav-item href="#" right v-b-tooltip.hover :title="$t('Manage.SystemConfig')">
                         <i class="fa fa-gear" />
                     </b-nav-item>
-                    <b-nav-item-dropdown text="Lang" right v-b-tooltip.hover title="語系選擇">
+                    <b-nav-item-dropdown text="Lang" right v-b-tooltip.hover :title="$t('Manage.LangSwitcher')">
                         <template slot="button-content">
                             <i class="fa fa-globe" aria-hidden="true" />
                         </template>
@@ -37,19 +32,19 @@
                         <template v-slot:button-content>
                             <i class="fa fa-ellipsis-v" aria-hidden="true" />
                         </template>
-                        <b-dropdown-item href="#">訪問前台網站</b-dropdown-item>
-                        <b-dropdown-item href="#">關於系統</b-dropdown-item>
-                        <b-dropdown-item href="#">個人資料</b-dropdown-item>
-                        <b-dropdown-item href="#">修改密碼</b-dropdown-item>
+                        <b-dropdown-item href="#">{{$t('Manage.GoToWebsite')}}</b-dropdown-item>
+                        <b-dropdown-item href="#">{{$t('Manage.AboutSystem')}}</b-dropdown-item>
+                        <b-dropdown-item href="#">{{$t('Manage.Profile')}}</b-dropdown-item>
+                        <b-dropdown-item href="#">{{$t('Manage.ResetPassword')}}</b-dropdown-item>
                         <b-dropdown-item href="#" @click="Logout">{{$t('Manage.Logout')}}</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
         <b-nav id="SubNav" class="nav-submenu shadow-sm">
-            <b-nav-item active>Link</b-nav-item>
-            <b-nav-item>Link</b-nav-item>
-            <b-nav-item>Link</b-nav-item>
+            <template v-for="(SubNav, index) in SubNavs">
+                <b-nav-item :key="index" active :to="SubNav.Path">{{$t('Manage.Menu.' + index)}}</b-nav-item>
+            </template>
         </b-nav>
     </header>
 </template>
@@ -59,7 +54,9 @@
         name: "AdminHeader",
         data() {
             return {
-                Logo: 'images/logo_icon_w.png'
+                Logo: 'images/logo_icon_w.png',
+                Page: 'DashBoard',
+                SubNavs: []
             }
         },
         mounted() {
@@ -77,6 +74,13 @@
                 return [
                     new Promise((_Resolve) => this.GetLogo(_Resolve))
                 ]
+            },
+            SelectNav(_Index, _Value) {
+                if (_Value.Sub) {
+                    this.SubNavs = _Value.Sub
+                } else {
+                    this.$router.push(_Value.Path)
+                }
             },
             GetLogo(_Resolve) {
                 this.$store.dispatch('GetStorageImages', this.Logo).then(_Response => {

@@ -32,12 +32,12 @@ Vue.use({
                     },
                 },
                 'Order': {
-                    'Open': true,
+                    'Open': false,
                     'Sub': false,
                     'Path': '/order/list'
                 },
                 'Product': {
-                    'Open': true,
+                    'Open': false,
                     'Sub': {
                         'ProductList': {
                             'Open': true,
@@ -79,7 +79,7 @@ Vue.use({
                     },
                 },
                 'Member': {
-                    'Open': true,
+                    'Open': false,
                     'Sub': {
                         'MemberList': {
                             'Open': true,
@@ -103,12 +103,16 @@ Vue.use({
                         },
                         'AdminGroup': {
                             'Open': false,
-                            'Path': '/member/group'
+                            'Path': '/admin/group'
+                        },
+                        'AdminPermission': {
+                            'Open': false,
+                            'Path': '/admin/permission'
                         },
                     },
                 },
                 'MessageCenter': {
-                    'Open': true,
+                    'Open': false,
                     'Sub': {
                         'Customer': {
                             'Open': true,
