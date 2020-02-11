@@ -8,19 +8,19 @@
 
 <script>
     export default {
-        name: 'Dashboard',
+        name: 'AddPost',
         data() {
             return {}
         },
         mounted() {
-          this.$root.$Progress.start()
-          Promise.all(this.Init()).then(() => {
-            this.$root.$Progress.finish()
-          }).catch(_Error => {
-            alert(_Error)
-            this.$root.$Progress.fail()
-            this.$router.push('/error')
-          })
+            this.$root.$Progress.start()
+            Promise.all(this.Init()).then(() => {
+                this.$root.$Progress.finish()
+            }).catch(_Error => {
+                alert(_Error)
+                this.$root.$Progress.fail()
+                this.$router.push('/error')
+            })
         },
         methods: {
             Init() {

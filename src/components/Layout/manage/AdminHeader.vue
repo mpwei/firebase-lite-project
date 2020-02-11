@@ -1,5 +1,5 @@
 <template>
-    <header id="header">
+    <header id="AdminHeader">
         <b-navbar id="MainNav" toggleable="lg" type="dark" variant="dark">
             <b-navbar-brand href="#" class="site-logo">
                 <img :src="Logo" alt="More Patient">
@@ -76,10 +76,11 @@
                 ]
             },
             SelectNav(_Index, _Value) {
+                this.SubNavs = []
                 if (_Value.Sub) {
                     this.SubNavs = _Value.Sub
                 } else {
-                    this.$router.push(_Value.Path)
+                    this.$router.push('/manage' + _Value.Path)
                 }
             },
             GetLogo(_Resolve) {

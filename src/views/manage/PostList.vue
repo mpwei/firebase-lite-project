@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'Dashboard',
+        name: 'PostList',
         data() {
             return {}
         },

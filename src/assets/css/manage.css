@@ -112,6 +112,14 @@
     box-shadow: 0 0 0.5rem 0.2rem rgba(39, 39, 40, 0.25);
 }
 
+#AdminHeader {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+
 #MainNav .site-logo {
     padding: 0;
     font-size: 1rem;
@@ -135,6 +143,10 @@
     }
 }
 
+.nav-submenu {
+    background-color: #fff;
+}
+
 .nav-submenu a {
     padding-top: .75rem;
     padding-bottom: .75rem;
@@ -149,4 +161,8 @@
 
 .nav-submenu a:hover {
     color: #121212;
+}
+
+.AdminContent {
+    margin-top: 8rem;
 }
