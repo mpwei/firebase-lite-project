@@ -9,7 +9,11 @@
 
 import Vue from 'vue'
 import VueFirestore from 'vue-firestore'
-import Firebase from 'firebase'
+import Firebase from 'firebase/app'
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/storage';
+import 'firebase/analytics';
 import FirebaseConfig from './config'
 
 Vue.use(VueFirestore)
