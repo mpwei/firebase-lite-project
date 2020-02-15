@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d22c740"],{f2fd:function(t,n,e){"use strict";e.r(n);var s=function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("ContentWrapper",{attrs:{id:"postList"}},[e("section",{staticClass:"container my-4"},[e("h1",[t._v("文章列表")]),t._v(" "+t._s(t.$route.path)+" ")])])},a=[],o={name:"PostList",mounted:function(){this.GetData()},methods:{GetData:function(){}}},c=o,i=e("2877"),u=Object(i["a"])(c,s,a,!1,null,null,null);n["default"]=u.exports}}]);
-//# sourceMappingURL=chunk-2d22c740.181b4cc2.js.map

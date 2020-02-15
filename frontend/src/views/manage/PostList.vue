@@ -46,8 +46,7 @@
                         this.List.push({
                             Title: doc.data().Title,
                             Slug: doc.data().Slug,
-                            PostTime: this.$moment(doc.data().PostTime.toMillis()).format("Y-MM-DD HH:m:s"),
-                            PostUnixTime: doc.data().PostTime.toMillis(),
+                            PostTime: this.$moment.unix(doc.data().PostTime).format("Y-MM-DD HH:m:s"),
                             Tags: doc.data().Tags
                         })
                     })
