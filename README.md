@@ -10,7 +10,7 @@ npm install
 
 ### 設定Firebase
 
-於src/firebase新增檔案config.js
+於frontend/src/firebase新增檔案config.js
 
 ```
 export default {
