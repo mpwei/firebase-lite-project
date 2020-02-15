@@ -6,7 +6,13 @@
                 <div v-if="Loading" class="text-center p-5">
                     <b-spinner label="Loading..."/>
                 </div>
-                <b-table v-if="(List.length > 0 && !Loading)" hover borderless :items="List" :fields="Fields" class="mb-0" />
+                <b-table v-if="(List.length > 0 && !Loading)" hover borderless :items="List" :fields="Fields" class="mb-0" >
+                    <template v-slot:cell(Action)="row">
+                        <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+                            {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
+                        </b-button>
+                    </template>
+                </b-table>
                 <div v-if="(List.length === 0 && !Loading)" class="text-center p-5">目前無任何文章。</div>
             </div>
         </section>
@@ -18,7 +24,13 @@
         name: 'PostList',
         data() {
             return {
-                Fields: ['Title', 'Slug', 'PostTime', 'PostUnixTime', 'Tags' , 'Action'],
+                Fields: [
+                    {key: 'Title', label: this.$t('Manage.Post.PostList/Title')},
+                    {key: 'Slug', label: this.$t('Manage.Post.PostList/Slug')},
+                    {key: 'PostTime', label: this.$t('Manage.Post.PostList/PostTime')},
+                    {key: 'Tags', label: this.$t('Manage.Post.PostList/Tags')},
+                    {key: 'Action', label: this.$t('Manage.Post.PostList/Action')},
+                ],
                 List: [],
                 Loading: true
             }

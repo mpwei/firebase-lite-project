@@ -40,6 +40,13 @@
 			"System": "系統訊息",
 			"": ""
 		},
+		"Post": {
+			"PostList/Title": "文章標題",
+			"PostList/Slug": "代稱",
+			"PostList/PostTime": "發文日期",
+			"PostList/Tags": "標籤",
+			"PostList/Action": "動作"
+		},
 		"Alert": "通知",
 		"MediaStore": "媒體櫃",
 		"SystemConfig": "系統設定",

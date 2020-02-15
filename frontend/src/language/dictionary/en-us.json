@@ -40,6 +40,13 @@
 			"System": "System",
 			"": ""
 		},
+		"Post": {
+			"PostList/Title": "Title",
+			"PostList/Slug": "Slug",
+			"PostList/PostTime": "Post Time",
+			"PostList/Tags": "Tags",
+			"PostList/Action": "Action"
+		},
 		"Alert": "Alert",
 		"MediaStore": "Media",
 		"SystemConfig": "Config",
