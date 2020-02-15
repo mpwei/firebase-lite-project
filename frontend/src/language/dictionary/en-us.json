@@ -63,6 +63,7 @@
 			"auth/expired": "Certificate is expired, please login again.",
 			"auth/unexpected-error": "Unexpected error, please try again later.",
 			"logout/success-logout": "You are success to logout!",
+			"firestore/notfound": "Data is not found.。",
 			"": ""
 		}
 	}

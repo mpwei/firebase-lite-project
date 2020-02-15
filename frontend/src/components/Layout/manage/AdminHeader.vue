@@ -8,7 +8,7 @@
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="MainLeft">
                     <template v-for="(value,index) in $Function.ManageMenu">
-                        <b-nav-item :key="index" v-if="value.Open" @click="SelectNav(index, value)">{{$t('Manage.Menu.' + index)}}</b-nav-item>
+                        <b-nav-item :key="index" :active="(index === $route.meta.Taxonomy)" v-if="value.Open" @click="SelectNav(index, value)">{{$t('Manage.Menu.' + index)}}</b-nav-item>
                     </template>
                 </b-navbar-nav>
                 <b-navbar-nav class="MainRight ml-auto">
@@ -43,7 +43,7 @@
         </b-navbar>
         <b-nav id="SubNav" class="nav-submenu shadow-sm">
             <template v-for="(SubNav, index) in SubNavs">
-                <b-nav-item :key="index" active :to="SubNav.Path">{{$t('Manage.Menu.' + index)}}</b-nav-item>
+                <b-nav-item :key="index" :to="SubNav.Path">{{$t('Manage.Menu.' + index)}}</b-nav-item>
             </template>
         </b-nav>
     </header>
@@ -80,7 +80,7 @@
                 if (_Value.Sub) {
                     this.SubNavs = _Value.Sub
                 } else {
-                    this.$router.push('/manage' + _Value.Path)
+                    this.$router.push(_Value.Path)
                 }
             },
             GetLogo(_Resolve) {

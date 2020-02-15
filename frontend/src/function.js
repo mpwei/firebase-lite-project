@@ -16,44 +16,44 @@ Vue.use({
                 'DashBoard': {
                     'Open': true,
                     'Sub': false,
-                    'Path': '/dashboard'
+                    'Path': '/manage/dashboard'
                 },
                 'Theme': {
                     'Open': 'true',
                     'Sub': {
                         'ThemeCarousel': {
                             'Open': true,
-                            'Path': '/theme/carousel'
+                            'Path': '/manage/theme/carousel'
                         },
                         'ThemeCustomMenu': {
                             'Open': true,
-                            'Path': '/theme/menu'
+                            'Path': '/manage/theme/menu'
                         }
                     },
                 },
                 'Order': {
                     'Open': false,
                     'Sub': false,
-                    'Path': '/order/list'
+                    'Path': '/manage/order/list'
                 },
                 'Product': {
                     'Open': false,
                     'Sub': {
                         'ProductList': {
                             'Open': true,
-                            'Path': '/product/list'
+                            'Path': '/manage/product/list'
                         },
                         'ProductAdd': {
                             'Open': true,
-                            'Path': '/product/add'
+                            'Path': '/manage/product/add'
                         },
                         'ProductCategory': {
                             'Open': true,
-                            'Path': '/product/category'
+                            'Path': '/manage/product/category'
                         },
                         'ProductAddCategory': {
                             'Open': true,
-                            'Path': '/product/add_category'
+                            'Path': '/manage/product/add_category'
                         },
                     },
                 },
@@ -62,19 +62,19 @@ Vue.use({
                     'Sub': {
                         'PostList': {
                             'Open': true,
-                            'Path': '/post/list'
+                            'Path': '/manage/post/list'
                         },
                         'PostAdd': {
                             'Open': true,
-                            'Path': '/post/add'
+                            'Path': '/manage/post/add'
                         },
                         'PostCategory': {
                             'Open': true,
-                            'Path': '/post/category'
+                            'Path': '/manage/post/category'
                         },
                         'PostAddCategory': {
                             'Open': true,
-                            'Path': '/post/add_category'
+                            'Path': '/manage/post/add_category'
                         },
                     },
                 },
@@ -83,31 +83,31 @@ Vue.use({
                     'Sub': {
                         'MemberList': {
                             'Open': true,
-                            'Path': '/member/list'
+                            'Path': '/manage/member/list'
                         },
                         'MemberAdd': {
                             'Open': true,
-                            'Path': '/member/add'
+                            'Path': '/manage/member/add'
                         },
                         'AdminList': {
                             'Open': true,
-                            'Path': '/admin/list'
+                            'Path': '/manage/admin/list'
                         },
                         'AdminAdd': {
                             'Open': true,
-                            'Path': '/admin/add'
+                            'Path': '/manage/admin/add'
                         },
                         'MemberGroup': {
                             'Open': false,
-                            'Path': '/member/group'
+                            'Path': '/manage/member/group'
                         },
                         'AdminGroup': {
                             'Open': false,
-                            'Path': '/admin/group'
+                            'Path': '/manage/admin/group'
                         },
                         'AdminPermission': {
                             'Open': false,
-                            'Path': '/admin/permission'
+                            'Path': '/manage/admin/permission'
                         },
                     },
                 },
@@ -116,11 +116,11 @@ Vue.use({
                     'Sub': {
                         'Customer': {
                             'Open': true,
-                            'Path': '/message/customer'
+                            'Path': '/manage/message/customer'
                         },
                         'System': {
                             'Open': true,
-                            'Path': '/message/system'
+                            'Path': '/manage/message/system'
                         },
                     }
                 }

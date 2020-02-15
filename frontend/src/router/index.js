@@ -15,10 +15,10 @@ const routes = [
     //訪客頁面
     {
         path: '/',
-        component: () => import('../components/Layout/UserLayout.vue'),
+        component: () => import('../components/Layout/UserLayout'),
         children: [
             {
-                component: () => import('../views/Home.vue'),
+                component: () => import('../views/Home'),
                 path: '/home',
                 name: 'home',
                 meta: {
@@ -28,7 +28,7 @@ const routes = [
             {
                 path: '/about',
                 name: 'about',
-                component: () => import('../views/About.vue'),
+                component: () => import('../views/About'),
                 meta: {
                     Auth: false
                 }
@@ -36,7 +36,7 @@ const routes = [
             {
                 path: '/posts',
                 name: 'postList',
-                component: () => import('../views/PostList.vue'),
+                component: () => import('../views/PostList'),
                 meta: {
                     Auth: false
                 }
@@ -44,7 +44,7 @@ const routes = [
             {
                 path: '/posts/:slug',
                 name: 'posts',
-                component: () => import('../views/Post.vue'),
+                component: () => import('../views/Post'),
                 meta: {
                     Auth: false
                 }
@@ -52,7 +52,7 @@ const routes = [
             {
                 path: '/error',
                 name: 'error',
-                component: () => import('../views/Error.vue'),
+                component: () => import('../views/Error'),
                 meta: {
                     Auth: false
                 }
@@ -60,7 +60,7 @@ const routes = [
             {
                 path: '/notfound',
                 name: 'notFound',
-                component: () => import('../views/NotFound.vue'),
+                component: () => import('../views/NotFound'),
                 meta: {
                     Auth: false
                 }
@@ -68,7 +68,7 @@ const routes = [
             {
                 path: '/maintenance',
                 name: 'maintenance',
-                component: () => import('../views/Maintenance.vue'),
+                component: () => import('../views/Maintenance'),
                 meta: {
                     Auth: false
                 }
@@ -78,21 +78,58 @@ const routes = [
     //管理員頁面
     {
         path: '/',
-        component: () => import('../components/Layout/AdminLayout.vue'),
+        component: () => import('../components/Layout/AdminLayout'),
         children: [
             {
                 path: '/manage/login',
                 name: 'adminLogin',
-                component: () => import('../views/manage/Login.vue'),
+                component: () => import('../views/manage/Login'),
                 meta: {
                     Auth: false
                 }
             },
             {
                 path: '/manage/dashboard',
-                name: 'dashboard',
-                component: () => import('../views/manage/Dashboard.vue'),
+                name: 'DashBoard',
+                component: () => import('../views/manage/Dashboard'),
                 meta: {
+                    Taxonomy: 'DashBoard',
+                    Auth: true
+                }
+            },
+            {
+                path: '/manage/post/list',
+                name: 'PostList',
+                component: () => import('../views/manage/PostList'),
+                meta: {
+                    Taxonomy: 'Post',
+                    Auth: true
+                }
+            },
+            {
+                path: '/manage/post/add',
+                name: 'PostAdd',
+                component: () => import('../views/manage/AddPost'),
+                meta: {
+                    Taxonomy: 'Post',
+                    Auth: true
+                }
+            },
+            {
+                path: '/manage/post/category',
+                name: 'PostCategory',
+                component: () => import('../views/manage/PostCategory'),
+                meta: {
+                    Taxonomy: 'Post',
+                    Auth: true
+                }
+            },
+            {
+                path: '/manage/post/add_category',
+                name: 'PostAddCategory',
+                component: () => import('../views/manage/PostAddCategory'),
+                meta: {
+                    Taxonomy: 'Post',
                     Auth: true
                 }
             },

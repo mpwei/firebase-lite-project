@@ -63,6 +63,7 @@
 			"auth/expired": "憑證已逾時，請重新登入。",
 			"auth/unexpected-error": "發生短暫錯誤，請稍後再試。",
 			"logout/success-logout": "您已成功登出。",
+			"firestore/notfound": "找不到資料！。",
 			"": ""
 		}
 	}

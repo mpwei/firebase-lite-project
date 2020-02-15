@@ -1,7 +1,8 @@
 <template>
     <ContentWrapper id="Dashboard" class="AdminContent">
         <section class="container">
-            <h1 class="font-weight-bold h2">總覽</h1>
+            <h1 class="font-weight-bold h2">新增文章</h1>
+
         </section>
     </ContentWrapper>
 </template>

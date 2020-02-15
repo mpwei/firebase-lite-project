@@ -16,27 +16,3 @@
         }
     }
 </script>
-
-<style>
-    #loading {
-        background-color: rgba(255, 255, 255, 0.95);
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: 1000;
-    }
-
-    #loading > .spinner-grow {
-        width: 4rem;
-        height: 4rem;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .8s;
-        transition-delay: .3s;
-    }
-
-    .fade-enter, .fade-leave-to {
-        opacity: 0;
-    }
-</style>

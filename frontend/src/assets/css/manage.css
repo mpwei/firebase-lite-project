@@ -112,6 +112,10 @@
     box-shadow: 0 0 0.5rem 0.2rem rgba(39, 39, 40, 0.25);
 }
 
+body {
+    background-color: #f8f9fa;
+}
+
 #AdminHeader {
     position: fixed;
     width: 100%;
@@ -165,4 +169,5 @@
 
 .AdminContent {
     margin-top: 8rem;
+    height: 100%;
 }

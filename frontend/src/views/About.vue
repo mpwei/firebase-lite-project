@@ -37,7 +37,7 @@
                         this.Post = _Response.data()
                         _Resolve()
                     } else {
-                        _Reject('Not found')
+                        _Reject(this.$t('Message.Manage.firestore/notfound'))
                     }
                 }).catch((_Error) => {
                     _Reject(_Error)

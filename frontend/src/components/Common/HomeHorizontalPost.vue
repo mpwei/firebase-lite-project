@@ -57,10 +57,10 @@
             GetPosts(_Resolve, _Reject) {
                 this.$store.state.database.collection('Posts').get().then(_Response => {
                     _Response.forEach(doc => {
-                        this.GetCover(doc.data().Cover).then(_Resolve => {
+                        this.$store.dispatch('GetStorageImages', doc.data().Cover).then(_Response => {
                             this.Posts.push({
                                 No:  doc.data().No,
-                                Cover: _Resolve,
+                                Cover: _Response,
                                 Title: doc.data().Title,
                                 Slug: doc.data().Slug,
                                 Excerpt: doc.data().Excerpt,
@@ -72,15 +72,6 @@
                     _Resolve()
                 }).catch((_Error) => {
                     _Reject(_Error)
-                })
-            },
-            GetCover(_Path) {
-                return new Promise((_Resolve, _Reject) => {
-                    this.$store.state.storage.ref().child(_Path).getDownloadURL().then(URL => {
-                        _Resolve(URL)
-                    }).catch(_Error => {
-                        _Reject(_Error)
-                    });
                 })
             },
             ComingSoon(_Column = 3) {

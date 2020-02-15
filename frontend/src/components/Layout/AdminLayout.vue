@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main class="bg-light">
         <Loading v-if="$store.state.loading"/>
         <vue-progress-bar/>
         <AdminHeader v-if="($store.state.manage.login && $route.path!=='/manage/login')" />

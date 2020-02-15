@@ -33,3 +33,7 @@ npm run serve
 ```
 npm run build
 ```
+
+### Todo
+
+未來將會以Firebase Function製作暫存的json檔案以做快取使用，避免造成過度讀取Firestore
