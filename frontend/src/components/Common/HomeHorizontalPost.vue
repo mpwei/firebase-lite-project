@@ -64,7 +64,7 @@
                                 Title: doc.data().Title,
                                 Slug: doc.data().Slug,
                                 Excerpt: doc.data().Excerpt,
-                                PostTime: doc.data().PostTime.toMillis(),
+                                PostTime: doc.data().PostTime,
                                 Tags: doc.data().Tags
                             })
                         })

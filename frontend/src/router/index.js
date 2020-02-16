@@ -116,6 +116,15 @@ const routes = [
                 }
             },
             {
+                path: '/manage/post/edit/:slug/:doc',
+                name: 'PostEdit',
+                component: () => import('../views/manage/AddPost'),
+                meta: {
+                    Taxonomy: 'Post',
+                    Auth: true
+                }
+            },
+            {
                 path: '/manage/post/category',
                 name: 'PostCategory',
                 component: () => import('../views/manage/PostCategory'),
@@ -128,6 +137,15 @@ const routes = [
                 path: '/manage/post/add_category',
                 name: 'PostAddCategory',
                 component: () => import('../views/manage/PostAddCategory'),
+                meta: {
+                    Taxonomy: 'Post',
+                    Auth: true
+                }
+            },
+            {
+                path: '/manage/post/edit_category/:slug/:doc',
+                name: 'PostEditCategory',
+                component: () => import('../views/manage/PostCategory'),
                 meta: {
                     Taxonomy: 'Post',
                     Auth: true
